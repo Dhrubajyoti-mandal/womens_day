@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Women's Day Gallery</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f2ff;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #9c4668 0%, #6a0dad 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            animation: slideUp 1.2s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-delay: 0.5s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Floating shapes for header background */
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 7s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background-color: #ff69b4;
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background-color: #8a2be2;
+            right: 15%;
+            top: 30%;
+            animation-delay: 1s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background-color: #ff1493;
+            left: 20%;
+            bottom: 10%;
+            animation-delay: 2s;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .image-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .image-card.animated {
+            animation: slideUpFade 0.8s ease forwards;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .image-caption h3 {
+            margin-bottom: 0.5rem;
+            color: #6a0dad;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #6a0dad 0%, #9c4668 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .heart {
+            color: #ff1493;
+            font-size: 1.2rem;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUpFade {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .image-card img {
+                height: 200px;
+            }
+            
+            .intro p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <h1>Happy Women's Day, Shreya</h1>
+        <div class="subtitle">A note to my strongest girl</div>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <p>হ্যাপি উইমেন্স ডে, আমার ভালোবাসা! তুই সবসময় এভাবেই উজ্জ্বল থাক, হাসিখুশি থাক। তুই যা যা ভালোবাসিস, সবকিছু যেন তোর কাছে এসে ধরা দেয়। আমার পাশে থাকিস, আমাকে আগলে রাখিস, আমার যত্ন নিস এই সবকিছুর জন্য হৃদয় থেকে ভালোবাসা</p>
+        </section>
+        
+        <section class="gallery">
+            <div class="image-card">
+                <img src="/api/placeholder/400/320" alt="Mountain landscape representing strength and resilience">
+                <div class="image-caption">
+                    <h3>Strength & Resilience</h3>
+                    <p>Like mountains that stand tall against all elements, women show incredible strength in overcoming challenges.</p>
+                </div>
+            </div>
+            
+            <div class="image-card">
+                <img src="/api/placeholder/400/320" alt="Flowing river landscape representing adaptability">
+                <div class="image-caption">
+                    <h3>Adaptability & Grace</h3>
+                    <p>Like rivers carving their path through the land, women navigate life's journey with adaptability and grace.</p>
+                </div>
+            </div>
+            
+            <div class="image-card">
+                <img src="/api/placeholder/400/320" alt="Sunrise landscape representing hope and new beginnings">
+                <div class="image-caption">
+                    <h3>Hope & Inspiration</h3>
+                    <p>Like the sunrise bringing light to a new day, women inspire us with their vision and creativity.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>Happy International Women's Day! Celebrating the strength, wisdom, and beauty.</p>
+            <p>Made with <span class="heart">♥</span> for the women of my heart.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Animation for image cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageCards = document.querySelectorAll('.image-card');
+            
+            // Function to check if an element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+                );
+            }
+            
+            // Initial check for elements in viewport
+            function checkCards() {
+                imageCards.forEach(card => {
+                    if (isInViewport(card)) {
+                        card.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkCards);
+            
+            // Check on load
+            checkCards();
+            
+            // Add staggered delay for each card
+            imageCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+        });
+    </script>
+</body>
+</html>
